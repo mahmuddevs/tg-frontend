@@ -2,7 +2,7 @@ import axios from "axios"
 import { useParams } from "react-router-dom"
 
 const Person = () => {
-    const username = useParams()
+    const { username } = useParams()
     if (username) {
         axios.get(`http://localhost:4000/${username}`)
             .then((res) => { console.log(res.data) })

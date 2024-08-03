@@ -1,20 +1,39 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "./App";
-import Home from "./Pages/Home";
-import Person from "./Pages/Person";
+import Template from "./layouts/Template"
+import Person from "./pages/Person"
+import Dashboard from "./layouts/Dashboard";
+import Add from "./pages/dashboard/Add";
+import Edit from "./pages/dashboard/Edit";
+import ShowAll from "./pages/dashboard/ShowAll";
+
 
 const routes = createBrowserRouter([
     {
-        element: <App />,
+        element: <Template />,
         children: [
             {
-                path: "/:user-name",
+                path: "/:username",
                 element: <Person />
+            }
+        ]
+
+    },
+    {
+        element: <Dashboard />,
+        path: "/dashboard",
+        children: [
+            {
+                path: "/dashboard/add",
+                element: <Add />
             },
             {
-                path: "/",
-                element: <Home />
-            }
+                path: "/dashboard/edit/:username",
+                element: <Edit />
+            },
+            {
+                path: "/dashboard/show-all",
+                element: <ShowAll />
+            },
         ]
     }
 ])
